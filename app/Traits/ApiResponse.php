@@ -13,7 +13,7 @@ use Carbon\Carbon;
 |
 */
 
-trait ApiResponser
+trait ApiResponse
 {
 	/**
      * Return a success JSON response.
