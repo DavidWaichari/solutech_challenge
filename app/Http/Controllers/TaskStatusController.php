@@ -89,8 +89,7 @@ class TaskStatusController extends Controller
 
         return $this->success([
             'status' => $status,
-            'message'=>'task status updated successfully'
-        ]);
+        ],'task status updated successfully');
 
 
     }
@@ -112,9 +111,7 @@ class TaskStatusController extends Controller
         $status->delete();
         return $this->success([
             'status' => $status,
-            'message'=>'task status updated successfully',
-
-        ]);
+        ],'task status deleted successfully');
     }
 
     public function associatedUserTasks($task_status_id)
