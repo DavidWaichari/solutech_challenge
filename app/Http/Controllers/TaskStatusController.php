@@ -57,7 +57,7 @@ class TaskStatusController extends Controller
         
         //check if the tak status exists
         if ($status == null) {
-            return $this->error('Tast Status not found');
+            return $this->error('Tast Status not found', 404);
         }
         return $this->success([
             'status' => $status
@@ -82,7 +82,7 @@ class TaskStatusController extends Controller
         $status = Status::find($id);
 
         if ($status == null) {
-            return $this->error('Tast Status not found');
+            return $this->error('Tast Status not found', 404);
         }
         //update
         $status->update($request->all());
@@ -106,7 +106,7 @@ class TaskStatusController extends Controller
         
         //check if the tak status exists
         if ($status == null) {
-            return $this->error('Tast Status not found');
+            return $this->error('Tast Status not found', 404);
         }
         $status->delete();
         return $this->success([
@@ -119,7 +119,7 @@ class TaskStatusController extends Controller
         $status = Status::find($task_status_id);
          //check if the tak status exists
          if ($status == null) {
-            return $this->error('Tast Status not found');
+            return $this->error('Tast Status not found', 404);
         }
        
         return $this->success([
@@ -131,7 +131,7 @@ class TaskStatusController extends Controller
         $status = Status::find($task_status_id);
          //check if the tak status exists
          if ($status == null) {
-            return $this->error('Tast Status not found');
+            return $this->error('Tast Status not found', 404);
         }
        
         return $this->success([

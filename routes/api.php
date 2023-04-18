@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TaskStatusController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserTaskController;
 
 
 /*
@@ -34,6 +35,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('users', UserController::class);
     Route::apiResource('task_status', TaskStatusController::class);
     Route::apiResource('tasks', TaskController::class);
+    Route::apiResource('user_tasks', UserTaskController::class);
     //get user tasks
     route::get('users/{id}/tasks',[UserController::class, 'userTasks']);
     //get associeted user tasks for task_status
