@@ -58,20 +58,34 @@ const router = createRouter({
     routes, // short for `routes: routes`
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach( async (to, from, next) => {
     document.title = to.meta.title
     if (to.meta.middleware == "guest") {
-        //check if user is authenticated using the token stored on local storage
-        if (store.state.auth.authenticated) {
+        await axios.get('/api/auth/user')
+        .then(response => {
             next({ name: "dashboard" })
-        }
-        next()
+        })
+        .catch(error => {
+            if (error.response && error.response.status === 401) {
+                next() 
+            } else {
+            console.log(error.response)
+            }
+        });
+        
     } else {
-        if (store.state.auth.authenticated) {
+
+        await axios.get('/api/auth/user')
+        .then(response => {
             next()
-        } else {
-            next({ name: "login" })
-        }
+        })
+        .catch(error => {
+            if (error.response && error.response.status === 401) {
+                next({ name: "login" })
+            } else {
+            console.log(error.response)
+            }
+        });
     }
 })
 

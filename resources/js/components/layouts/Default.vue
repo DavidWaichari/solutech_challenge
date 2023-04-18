@@ -34,23 +34,21 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
 export default {
     name:"default-layout",
     data(){
         return {
-            user:this.$store.state.auth.user
+            user:{}
         }
     },
+    created(){
+        this.user = JSON.parse(localStorage.getItem('user'))
+    },
     methods:{
-        ...mapActions({
-            signOut:"auth/logout"
-        }),
         async logout(){
-            await axios.post('/logout').then(({data})=>{
-                this.signOut()
-                this.$router.push({name:"login"})
-            })
+            localStorage.removeItem('token')
+            localStorage.removeItem('user')
+            await axios.post('/api/auth/logout').then(this.$router.push({name:"login"}))
         }
     }
 }

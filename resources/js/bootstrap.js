@@ -20,8 +20,10 @@ window.axios.defaults.withCredentials = true
 
 const token = localStorage.getItem('token');
 
+
 // Set default headers for all requests
 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
 
 
 /**

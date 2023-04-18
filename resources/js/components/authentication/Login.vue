@@ -56,7 +56,9 @@ export default {
             this.processing = true
             await axios.post('/api/auth/login',this.auth).then( response =>{
                 window.localStorage.setItem("token", response.data.data.token);
-                window.localStorage.setItem("user", response.data.data.user);
+                window.localStorage.setItem("user",JSON.stringify(response.data.data.user));
+                window.location.href = "/";
+
             }).catch(({response})=>{
                 if(response.status===422){
                     this.validationErrors = response.data.errors

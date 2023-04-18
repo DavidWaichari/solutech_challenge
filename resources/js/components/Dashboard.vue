@@ -20,8 +20,11 @@ export default {
     name:"dashboard",
     data(){
         return {
-            user:this.$store.state.auth.user
+            user:{}
         }
-    }
+    },
+    created(){
+        this.user = JSON.parse(localStorage.getItem('user'))
+    },
 }
 </script>
