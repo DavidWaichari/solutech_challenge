@@ -10,5 +10,14 @@
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "@popperjs/core": "^2.11.7",
+        "@vitejs/plugin-vue": "^4.1.0",
+        "bootstrap": "^5.2.3",
+        "vue": "^3.2.36",
+        "vue-loader": "^17.0.1",
+        "vue-router": "^4.1.6",
+        "vuex-persistedstate": "^4.1.0"
     }
 }
