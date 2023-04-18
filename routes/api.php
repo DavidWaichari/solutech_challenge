@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TaskStatusController;
 
 
 /*
@@ -30,8 +31,14 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     //api routes
     Route::apiResource('users', UserController::class);
+    Route::apiResource('task_status', TaskStatusController::class);
     //get user tasks
     route::get('users/{id}/tasks',[UserController::class, 'userTasks']);
+    //get associeted user tasks for task_status
+    route::get('task_status/{id}/associated_user_tasks',[TaskStatusController::class, 'associatedUserTasks']);
+    //get associeted  tasks for task_status
+    route::get('task_status/{id}/associated_tasks',[TaskStatusController::class, 'associatedTasks']);
+
 });
 
 

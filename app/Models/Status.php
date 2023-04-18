@@ -12,4 +12,14 @@ class Status extends Model
         'name',
         'deleted_at'
     ];
+
+    public function usertasks()
+    {
+        return $this->hasMany(UserTask::class, 'status_id');
+    }
+    
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'status_id');
+    }
 }
