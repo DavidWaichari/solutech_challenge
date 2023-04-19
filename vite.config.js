@@ -29,7 +29,10 @@ export default defineConfig({
     },
     build: {
         rollupOptions: {
-          external: /^admin\//
+            external: [
+                // externalize all image files and assets under the admin folder
+                /^\/admin\/(.+)\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf)$/i,
+            ],
         }
     }
 });
