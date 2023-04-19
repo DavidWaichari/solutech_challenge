@@ -1,41 +1,50 @@
 <template>
-    <div class="container h-100">
-        <div class="row h-100 align-items-center">
-            <div class="col-12 col-md-6 offset-md-3">
-                <div class="card shadow sm">
-                    <div class="card-body">
-                        <h1 class="text-center">Login</h1>
-                        <hr/>
-                        <form action="javascript:void(0)" class="row" method="post">
-                            <div class="col-12" v-if="Object.keys(validationErrors).length > 0">
-                                <div class="alert alert-danger">
-                                    <ul class="mb-0">
-                                        <li v-for="(value, key) in validationErrors" :key="key">{{ value[0] }}</li>
-                                    </ul>
+    <div class="container">
+
+<!-- Outer Row -->
+<div class="row justify-content-center">
+
+    <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-6 d-none d-lg-block">
+                        <h2 class="text-center text-primary mt-5">Solutech Challenge</h2>
+                        <img class="img-profile rounded-circle"
+                            src="admin/img/undraw_rocket.svg">
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                            </div>
+                            <form class="user">
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user"
+                                        id="exampleInputEmail" aria-describedby="emailHelp"
+                                        placeholder="Enter Email Address..." v-model="form.email" name="email">
                                 </div>
-                            </div>
-                            <div class="form-group col-12">
-                                <label for="email" class="font-weight-bold">Email</label>
-                                <input type="text" v-model="auth.email" name="email" id="email" class="form-control">
-                            </div>
-                            <div class="form-group col-12 my-2">
-                                <label for="password" class="font-weight-bold">Password</label>
-                                <input type="password" v-model="auth.password" name="password" id="password" class="form-control">
-                            </div>
-                            <div class="col-12 mb-2">
-                                <button type="submit" :disabled="processing" @click="login" class="btn btn-primary btn-block">
-                                    {{ processing ? "Please wait" : "Login" }}
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-user"
+                                        id="exampleInputPassword" placeholder="Password" v-model="form.password" name="password">
+                                </div>
+                                <button @click.prevent="login" class="btn btn-primary btn-user btn-block">
+                                    Login
                                 </button>
-                            </div>
-                            <div class="col-12 text-center">
-                                <label>Don't have an account? <router-link :to="{name:'register'}">Register Now!</router-link></label>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
+
+</div>
+
+</div>
 </template>
 
 <script>
@@ -43,7 +52,7 @@ export default {
     name:"login",
     data(){
         return {
-            auth:{
+            form:{
                 email:"",
                 password:""
             },
@@ -54,10 +63,11 @@ export default {
     methods:{
         async login(){
             this.processing = true
-            await axios.post('/api/auth/login',this.auth).then( response =>{
+            await axios.post('/api/auth/login',this.form).then( response =>{
                 window.localStorage.setItem("token", response.data.data.token);
                 window.localStorage.setItem("user",JSON.stringify(response.data.data.user));
                 window.location.href = "/";
+                // this.$router.push('/');
 
             }).catch(({response})=>{
                 if(response.status===422){

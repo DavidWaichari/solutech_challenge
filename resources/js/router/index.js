@@ -133,20 +133,8 @@ const router = createRouter({
 router.beforeEach( async (to, from, next) => {
     document.title = to.meta.title
     if (to.meta.middleware == "guest") {
-        await axios.get('/api/auth/user')
-        .then(response => {
-            next({ name: "dashboard" })
-        })
-        .catch(error => {
-            if (error.response && error.response.status === 401) {
-                next() 
-            } else {
-            console.log(error.response)
-            }
-        });
-        
+        next()
     } else {
-
         await axios.get('/api/auth/user')
         .then(response => {
             next()

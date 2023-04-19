@@ -6,12 +6,9 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
-    </a>
+    <router-link class="sidebar-brand d-flex align-items-center justify-content-center" to="/">
+        <div class="sidebar-brand-text mx-3">Solutech Task Manager</div>
+    </router-link>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
@@ -128,10 +125,10 @@
                             Activity Log
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                        <button class="dropdown-item" @click.prevent="logout">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                             Logout
-                        </a>
+                        </button>
                     </div>
                 </li>
 
@@ -151,7 +148,7 @@
     <footer class="sticky-footer bg-white">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Your Website 2021</span>
+                <span>Copyright &copy; Solutech Limited 2023</span>
             </div>
         </div>
     </footer>
@@ -179,7 +176,7 @@ export default {
         async logout(){
             localStorage.removeItem('token')
             localStorage.removeItem('user')
-            await axios.post('/api/auth/logout').then(this.$router.push({name:"login"}))
+            await axios.post('/api/auth/logout').then( window.location.href = "/login")
         }
     }
 }
