@@ -27,4 +27,11 @@ export default defineConfig({
             '@': '/resources/js',
         }
     },
+    build: {
+        rollupOptions: {
+          external: [
+            'admin/img/undraw_profile.svg'
+          ]
+        }
+    }
 });
