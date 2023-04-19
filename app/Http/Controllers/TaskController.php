@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponse;
 use App\Models\Task;
+use Carbon\Carbon;
 
 
 class TaskController extends Controller
@@ -18,10 +19,10 @@ class TaskController extends Controller
     public function index()
     {
         //get all tasks
-        $task = Task::all();
+        $tasks = Task::all();
 
         return $this->success([
-            'task' => $task
+            'tasks' => $tasks
         ]);
     }
 
@@ -37,10 +38,11 @@ class TaskController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
-        $status = Task::create($request->all());
+        $request['due_date'] = Carbon::parse($request->due_date)->format('Y-m-d H:i');
+        $task = Task::create($request->all());
 
         return $this->success([
-            'status' => $status
+            'task' => $task
         ]);
     }
 
