@@ -12,8 +12,8 @@
                 <div class="row">
                     <div class="col-lg-6 d-none d-lg-block">
                         <h2 class="text-center text-primary mt-5">Solutech Challenge</h2>
-                        <img class="img-profile rounded-circle"
-                            src="/admin/img/solutech_logo.png">
+                        <!-- <img class="img-profile rounded-circle"
+                            src="/admin/img/solutech_logo.png"> -->
                     </div>
                     <div class="col-lg-6">
                         <div class="p-5">
