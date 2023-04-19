@@ -53,8 +53,8 @@
         </a>
         <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <router-link class="collapse-item" to="/users">Status List</router-link>
-                <router-link class="collapse-item" to="/users/create">Add Status</router-link>
+                <router-link class="collapse-item" to="/task_status">Status List</router-link>
+                <router-link class="collapse-item" to="/task_status_create">Add Status</router-link>
             </div>
         </div>
     </li>
@@ -68,7 +68,7 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <router-link class="collapse-item" to="/users">Status List</router-link>
-                <router-link class="collapse-item" to="/users/create">Add Status</router-link>-
+                <router-link class="collapse-item" to="/">Add Status</router-link>-
             </div>
         </div>
     </li>
@@ -81,7 +81,7 @@
         <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <router-link class="collapse-item" to="/users">User Tasks List</router-link>
-                <router-link class="collapse-item" to="/users/create">Add User Task</router-link>-
+                <router-link class="collapse-item" to="/">Add User Task</router-link>-
             </div>
         </div>
     </li>
@@ -108,7 +108,7 @@
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.name}}</span>
                         <img class="img-profile rounded-circle"
                             src="admin/img/undraw_profile.svg">
                     </a>

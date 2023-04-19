@@ -15,6 +15,8 @@ const Dashboard = () => import('@/components/Dashboard.vue')
 /* Authenticated Component */
 import UsersList from '../components/users/List.vue';
 import CreateUser from '../components/users/Create.vue';
+import StatusList from '../components/task_status/List.vue';
+import CreateStatus from '../components/task_status/Create.vue';
 
 const routes = [
     {
@@ -64,6 +66,22 @@ const routes = [
                 component: UsersList,
                 meta: {
                     title: `UsersList`
+                }
+            },
+            {
+                name: "task_status",
+                path: '/task_status',
+                component: StatusList,
+                meta: {
+                    title: `StatusList`
+                }
+            },
+            {
+                name: "task_status.create",
+                path: '/task_status_create',
+                component: CreateStatus,
+                meta: {
+                    title: `CreateStatus`
                 }
             },
             
