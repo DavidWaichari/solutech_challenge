@@ -19,6 +19,8 @@ import StatusList from '../components/task_status/List.vue';
 import CreateStatus from '../components/task_status/Create.vue';
 import TasksList from '../components/tasks/List.vue';
 import CreateTask from '../components/tasks/Create.vue';
+import UsersTaskList from '../components/user_tasks/List.vue';
+import CreateUserTask from '../components/user_tasks/Create.vue';
 
 const routes = [
     {
@@ -100,6 +102,22 @@ const routes = [
                 component: CreateTask,
                 meta: {
                     title: `CreateTask`
+                }
+            },
+            {
+                name: "user_tasks",
+                path: '/user_tasks',
+                component: UsersTaskList,
+                meta: {
+                    title: `UsersTaskList`
+                }
+            },
+            {
+                name: "user_tasks.create",
+                path: '/user_tasks_create',
+                component: CreateUserTask,
+                meta: {
+                    title: `CreateUserTask`
                 }
             },
             

@@ -80,8 +80,8 @@
         </a>
         <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <router-link class="collapse-item" to="/users">User Tasks List</router-link>
-                <router-link class="collapse-item" to="/">Add User Task</router-link>-
+                <router-link class="collapse-item" to="/user_tasks">User Tasks List</router-link>
+                <router-link class="collapse-item" to="/user_tasks_create">Add User Task</router-link>
             </div>
         </div>
     </li>

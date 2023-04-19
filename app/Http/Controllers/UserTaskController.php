@@ -7,6 +7,7 @@ use App\Traits\ApiResponse;
 use App\Models\UserTask;
 use App\Models\User;
 use App\Models\Task;
+use Carbon\Carbon;
 
 
 class UserTaskController extends Controller
@@ -20,10 +21,10 @@ class UserTaskController extends Controller
     public function index()
     {
         //get all user tasks
-        $task = UserTask::all();
+        $user_tasks = UserTask::all();
 
         return $this->success([
-            'task' => $task
+            'user_tasks' => $user_tasks
         ]);
     }
 
@@ -36,11 +37,11 @@ class UserTaskController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
            'user_id' => 'required|integer',
            'task_id' => 'required|integer',
-           'remarks' => 'required',
         ]);
+
+
 
         //check if we have a user
         $user = User::find($request->user_id);
@@ -52,6 +53,11 @@ class UserTaskController extends Controller
         if ($task == null) {
             return $this->error('Task not found', 404);
         }
+
+        $request['due_date'] = Carbon::parse($request->due_date)->format('Y-m-d H:i');
+        $request['start_time'] = Carbon::parse($request->start_time)->format('Y-m-d H:i');
+        $request['end_time'] = Carbon::parse($request->end_time)->format('Y-m-d H:i');
+
         $user_task = UserTask::create($request->all());
 
         return $this->success([
@@ -89,10 +95,8 @@ class UserTaskController extends Controller
     public function update(Request $request, $id)
     {
         $attr = $request->validate([
-            'name' => 'required|string|max:255',
            'user_id' => 'required|integer',
            'task_id' => 'required|integer',
-           'remarks' => 'required',
         ]);
 
         //check if the user task exists
