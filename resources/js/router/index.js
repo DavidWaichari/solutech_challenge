@@ -13,7 +13,8 @@ const DahboardLayout = () => import('@/components/layouts/Default.vue')
 /* Authenticated Component */
 const Dashboard = () => import('@/components/Dashboard.vue')
 /* Authenticated Component */
-
+import UsersList from '../components/users/List.vue';
+import CreateUser from '../components/users/Create.vue';
 
 const routes = [
     {
@@ -48,7 +49,24 @@ const routes = [
                 meta: {
                     title: `Dashboard`
                 }
-            }
+            },
+            {
+                name: "users.create",
+                path: '/users_create',
+                component: CreateUser,
+                meta: {
+                    title: `CreateUser`
+                }
+            },
+            {
+                name: "users",
+                path: '/users',
+                component: UsersList,
+                meta: {
+                    title: `UsersList`
+                }
+            },
+            
         ]
     }
 ]
