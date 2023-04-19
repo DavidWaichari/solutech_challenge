@@ -35,6 +35,10 @@
                                 </button>
                             </form>
                         </div>
+                        <hr>
+                        <h2>Login With</h2>
+                        <p>Email: admin@solutech.com</p>
+                        <p>Password: password</p>
                     </div>
                 </div>
             </div>

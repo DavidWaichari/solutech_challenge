@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
         $user = User::where('email', 'dwaichari@gmail.com')->first();
 
         if ($user == '') {
-            DB::table('users')->insert([
+            User::create([
                 'name'=>'David Waichari',
                 'email'=>'dwaichari@gmail.com',
                 'password' => Hash::make('secret1234'),
