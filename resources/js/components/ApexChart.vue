@@ -19,12 +19,20 @@
         },
         chartSeries: [
           {
-            name: 'My Series',
+            name: 'No of Tasks',
             data: [30, 40, 25, 50, 49, 21, 70],
           },
         ],
       };
     },
+    async created(){
+        await axios.get('/api/user_chart_data').then(
+            response => {
+                this.chartOptions.xaxis.categories = response.data.data.months
+                this.chartSeries[0].data = response.data.data.no_of_tasks
+            }
+        )
+    }
   };
   </script>
   

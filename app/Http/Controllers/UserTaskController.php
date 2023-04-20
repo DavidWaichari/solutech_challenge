@@ -8,6 +8,7 @@ use App\Models\UserTask;
 use App\Models\User;
 use App\Models\Task;
 use Carbon\Carbon;
+use DB;
 
 
 class UserTaskController extends Controller
@@ -147,5 +148,25 @@ class UserTaskController extends Controller
         return $this->success([
             'user_task' => $user_task,
         ],'task  deleted successfully');
+    }
+
+    public function userTasksChartData()
+    {
+        $months = [];
+        $no_of_tasks = [];
+        for ($i=5; $i >= 0; $i--) { 
+            $month = Carbon::now()->subMonth($i);
+            //fetch user tasks
+            $tasks =DB::table('user_tasks')
+                    ->whereYear('created_at', $month->year)
+                    ->whereMonth('created_at', $month->month)
+                    ->count();
+            array_push($months, $month->format('M'));
+            array_push($no_of_tasks, $tasks);
+        }
+        return $this->success([
+            'months' => $months,
+            'no_of_tasks' =>$no_of_tasks
+        ],'user chart chart data fetched successfully');
     }
 }

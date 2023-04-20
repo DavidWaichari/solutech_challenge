@@ -37,11 +37,14 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('tasks', TaskController::class);
     Route::apiResource('user_tasks', UserTaskController::class);
     //get user tasks
-    route::get('users/{id}/tasks',[UserController::class, 'userTasks']);
+    Route::get('users/{id}/tasks',[UserController::class, 'userTasks']);
     //get associeted user tasks for task_status
-    route::get('task_status/{id}/associated_user_tasks',[TaskStatusController::class, 'associatedUserTasks']);
+    Route::get('task_status/{id}/associated_user_tasks',[TaskStatusController::class, 'associatedUserTasks']);
     //get associeted  tasks for task_status
-    route::get('task_status/{id}/associated_tasks',[TaskStatusController::class, 'associatedTasks']);
+    Route::get('task_status/{id}/associated_tasks',[TaskStatusController::class, 'associatedTasks']);
+    //get chart data
+    Route::get('user_chart_data',[UserTaskController::class, 'userTasksChartData']);
+
 
 });
 
