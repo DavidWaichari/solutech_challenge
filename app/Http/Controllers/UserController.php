@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponse;
 use App\Models\User;
+use App\Models\UserTask;
 
 
 class UserController extends Controller
@@ -85,10 +86,11 @@ class UserController extends Controller
           $user = User::find($user_id);
           if ($user == null) {
               return $this->error('user not found', 404);
-          }
+            }
+            $tasks = UserTask::where('user_id', $user->id)->with(['task','status','user'])->get();
            return $this->success([
                'user' => $user,
-               'tasks' => $user->tasks
+               'tasks' => $tasks
            ]);
     }
 }

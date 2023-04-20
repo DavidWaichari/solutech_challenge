@@ -21,7 +21,7 @@ class UserTaskController extends Controller
     public function index()
     {
         //get all user tasks
-        $user_tasks = UserTask::all();
+        $user_tasks = UserTask::with(['user', 'task', 'status'])->get();
 
         return $this->success([
             'user_tasks' => $user_tasks

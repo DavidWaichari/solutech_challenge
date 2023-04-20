@@ -16,4 +16,9 @@ class Task extends Model
         'status_id',
         'deleted_at'
     ];
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class, 'status_id');
+    }
 }

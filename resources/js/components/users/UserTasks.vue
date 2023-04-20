@@ -42,13 +42,13 @@
               </tfoot>
               <tbody>
                 <tr v-for="(task, index) in user_tasks" :key="index">
-                  <td>{{ task.user_id }}</td>
-                  <td>{{ task.task_id }}</td>
+                  <td>{{ task.user.name }}</td>
+                  <td>{{ task.task.name }}</td>
                   <td>{{ task.due_date }}</td>
                   <td>{{ task.start_time }}</td>
                   <td>{{ task.end_time }}</td>
                   <td>{{ task.remarks }}</td>
-                  <td>{{ task.status_id }}</td>
+                  <td>{{ task.status.name }}</td>
                   <td>{{ task.created_at }}</td>
                   <td><button  class="btn btn-warning btn-block" @click.prevent="deleteTask(index)"> Delete</button></td>
                   <td><button  class="btn btn-primary btn-block"> View Tasks</button></td>

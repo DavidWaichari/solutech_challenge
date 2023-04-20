@@ -19,7 +19,7 @@ class TaskController extends Controller
     public function index()
     {
         //get all tasks
-        $tasks = Task::all();
+        $tasks = Task::with('status')->get();
 
         return $this->success([
             'tasks' => $tasks

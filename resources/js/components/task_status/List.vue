@@ -33,7 +33,7 @@
                   <td>{{ status.name }}</td>
                   <td>{{ status.created_at }}</td>
                   <td><button  class="btn btn-warning btn-block" @click.prevent="deleteStatus(index)"> Delete</button></td>
-                  <td><button  class="btn btn-primary btn-block"> View Tasks</button></td>
+                  <td><button  class="btn btn-primary btn-block" @click.prevent="userTasks(status.id)"> View User Tasks</button></td>
                 </tr>
               </tbody>
             </table>
@@ -65,6 +65,9 @@
     methods:{
         deleteStatus(id){
             alert('We are not deleting a status at this level')
+        },
+        userTasks(id){
+          this.$router.push(`/status/${id}/user_tasks`);
         }
     }
   };

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponse;
 use App\Models\Status;
+use App\Models\UserTask;
 
 
 class TaskStatusController extends Controller
@@ -121,9 +122,10 @@ class TaskStatusController extends Controller
          if ($status == null) {
             return $this->error('Tast Status not found', 404);
         }
-       
+        $user_tasks =UserTask::where('status_id', $task_status_id)->with(['task','status','user'])->get();
         return $this->success([
-            'user_tasks' => $status->usertasks,
+            'status' => $status,
+            'user_tasks' => $user_tasks,
         ]);
     }
     public function associatedTasks($task_status_id)
