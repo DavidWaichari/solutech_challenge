@@ -21,6 +21,7 @@ import TasksList from '../components/tasks/List.vue';
 import CreateTask from '../components/tasks/Create.vue';
 import UsersTaskList from '../components/user_tasks/List.vue';
 import CreateUserTask from '../components/user_tasks/Create.vue';
+import UserTasks from '../components/users/UserTasks.vue';
 
 const routes = [
     {
@@ -118,6 +119,14 @@ const routes = [
                 component: CreateUserTask,
                 meta: {
                     title: `CreateUserTask`
+                }
+            },
+            {
+                name: "user_tasks.tasks",
+                path: '/users/:user_id/tasks',
+                component: UserTasks,
+                meta: {
+                    title: `UserTasks`
                 }
             },
             

@@ -36,7 +36,7 @@
                   <td>{{ user.email }}</td>
                   <td>{{ user.created_at }}</td>
                   <td><button  class="btn btn-warning btn-block" @click.prevent="deleteUser(index)"> Delete</button></td>
-                  <td><button  class="btn btn-primary btn-block"> View Tasks</button></td>
+                  <td><button  class="btn btn-primary btn-block" @click.prevent="userTasks(user.id)"> View Tasks</button></td>
                 </tr>
               </tbody>
             </table>
@@ -71,6 +71,9 @@
     methods:{
         deleteUser(id){
             alert('We are not deleting a user at this level')
+        },
+        userTasks(id){
+          this.$router.push(`/users/${id}/tasks`);
         }
     }
   };
