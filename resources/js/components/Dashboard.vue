@@ -93,6 +93,7 @@
             <div
                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">User Tasks Monthly Progress (Last 6 Months)</h6>
+                <p>This is using static data since the api does not have a lot of data(Apex Chart)</p>
             </div>
             <!-- Card Body -->
             <div class="card-body">
